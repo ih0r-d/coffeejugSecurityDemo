@@ -3,6 +3,15 @@
 ![](https://img.shields.io/badge/Language-Java-informational?style=flat&logo=java&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-Terraform-informational?style=flat&logo=java&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-Maven-informational?style=flat&logo=apache-maven&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-Hadolint-informational?style=flat&logo=hadolint&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-Checkmarx-informational?style=flat&logo=checkmarx&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-SonarQube-informational?style=flat&logo=sonarqube&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-Trivy-informational?style=flat&logo=trivy&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-Snyk-informational?style=flat&logo=snyk&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-TruffleHog-informational?style=flat&logo=trufflehog&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-Gitleaks-informational?style=flat&logo=gitleaks&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-Git--secrets-informational?style=flat&logo=git&logoColor=white&color=2bbc8a)
+
 
 This repository contains a demo of java application and terraform code.
 
@@ -11,6 +20,14 @@ This repository contains a demo of java application and terraform code.
 - [Tools overview](#application)
     - [Hadolint](#hadolint)
     - [SonarQube](#sonarqube)
+<<<<<<< HEAD
+=======
+    - [Trivy](#trivy)
+    - [Snyk](#snyk)
+    - [Trufflehog](#trufflehog)
+    - [Gitleaks](#gitleaks)
+    - [Git-secrets](#git-secrets)
+>>>>>>> 4c107bb (update README.md)
 
 
 ## Tools overview
@@ -82,3 +99,26 @@ docker buildx build . -t coffee-jug-demo:v1-fixed -f app/Dockerfile.v1-fixed
 ```
 
 ### SonarQube
+=======
+
+[//]: # (todo: need to add something)
+
+### Trivy
+
+[//]: # (todo: need to add something)
+
+### Snyk
+
+[//]: # (todo: need to add something)
+
+### Trufflehog
+
+[//]: # (todo: need to add something)
+
+### Gitleaks
+
+[//]: # (todo: need to add something)
+
+### Git-secrets
+
+[//]: # (todo: need to add something)
