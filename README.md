@@ -122,12 +122,32 @@ docker-compose -f app/sonarqube.yml up -d
 
 
 ### Trivy
+1. Overview of doc https://aquasecurity.github.io/trivy/v0.51/docs
+2. Image scan
+```shell
+trivy image openjdk:21-jdk
+```
 
-[//]: # (todo: need to add something)
+2. App full scan in `fs` mode scan
+```shell
+trivy fs --scanners vuln,secret,misconfig app/
+```
+
+3. Terraform full scan in `fs` mode scan
+```shell
+trivy fs --scanners vuln,secret,misconfig terraform/
+```
+
+4. Actions
+* https://github.com/aquasecurity/trivy-action
+* https://github.com/lazy-actions/gitrivy
+* CodeQL tool -> https://github.com/ih0r-d/coffeeJugSecurityDemo/settings/security_analysis
+* 
 
 ### Snyk
-
-[//]: # (todo: need to add something)
+```shell
+snyk --help
+```
 
 ### Trufflehog
 
@@ -138,12 +158,5 @@ docker-compose -f app/sonarqube.yml up -d
 [//]: # (todo: need to add something)
 
 ### Git-secrets
-
-[//]: # (todo: need to add something)
-=======
-
-[//]: # (todo: need to add something)
-
-### Trivy
 
 [//]: # (todo: need to add something)
