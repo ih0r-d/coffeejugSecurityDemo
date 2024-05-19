@@ -1,0 +1,16 @@
+failure-threshold: info
+format: gitlab_codeclimate
+ignored:
+  - DL3008
+#  - DL3027
+override:
+  warning:
+    - DL3059
+trustedRegistries:
+  - docker.io
+strict-labels: true
+disable-ignore-pragma: true
+overrides:
+  - pattern: "^apt-get install"
+    message: "Please use apt-get install with --no-install-recommends"
+    severity: error

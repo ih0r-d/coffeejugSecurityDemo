@@ -1,0 +1,15 @@
+FROM ubuntu:23.04
+
+RUN apt-get clean && apt-get update && \
+    apt-get upgrade -y && \
+    apt-cache madison openjdk-21-jdk && \
+    apt-get install -y openjdk-21-jdk --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
+
+USER spring:spring
+EXPOSE 8080
+
+WORKDIR /app
+COPY target/coffee-jug-demo.jar /app/app.jar
+ENV OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.security.egd=file:/dev/./urandom"
+ENTRYPOINT ["sh", "-c", "java $OPTS -jar /app/app.jar"]
