@@ -18,6 +18,7 @@ This repository contains a demo of java application and terraform code.
 ## Table of Contents
 
 - [Tools overview](#application)
+<<<<<<< HEAD
     - [Hadolint](#hadolint)
     - [SonarQube](#sonarqube)
 <<<<<<< HEAD
@@ -28,6 +29,16 @@ This repository contains a demo of java application and terraform code.
     - [Gitleaks](#gitleaks)
     - [Git-secrets](#git-secrets)
 >>>>>>> 4c107bb (update README.md)
+=======
+  - [Hadolint](#hadolint)
+  - [Checkmarks](#checkmarks)
+  - [SonarQube](#sonarqube)
+  - [Trivy](#trivy)
+  - [Snyk](#snyk)
+  - [Trufflehog](#trufflehog)
+  - [Gitleaks](#gitleaks)
+  - [Git-secrets](#git-secrets)
+>>>>>>> 9e1dc89 (sonarqube: docker-compose and Readme)
 
 
 ## Tools overview
@@ -101,7 +112,19 @@ docker buildx build . -t coffee-jug-demo:v1-fixed -f app/Dockerfile.v1-fixed
 ### SonarQube
 =======
 
-[//]: # (todo: need to add something)
+1. Start `sonarqube` via docker-compose
+```shell
+docker-compose -f app/sonarqube.yml up -d
+```
+
+2. Execute SonarScanner via maven
+```shell
+  mvn -f app/pom.xml clean verify sonar:sonar \
+  -Dsonar.projectKey=CoffeeJugDemo \
+  -Dsonar.projectName='CoffeeJugDemo' \
+  -Dsonar.host.url=http://0.0.0.0:9000 \
+  -Dsonar.token=sqp_04b3cdb170e93f2d376e9e9549de51fc20a32ae1
+```
 
 ### Trivy
 
