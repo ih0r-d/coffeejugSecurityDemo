@@ -18,27 +18,14 @@ This repository contains a demo of java application and terraform code.
 ## Table of Contents
 
 - [Tools overview](#application)
-<<<<<<< HEAD
-    - [Hadolint](#hadolint)
-    - [SonarQube](#sonarqube)
-<<<<<<< HEAD
-=======
-    - [Trivy](#trivy)
-    - [Snyk](#snyk)
-    - [Trufflehog](#trufflehog)
-    - [Gitleaks](#gitleaks)
-    - [Git-secrets](#git-secrets)
->>>>>>> 4c107bb (update README.md)
-=======
   - [Hadolint](#hadolint)
-  - [Checkmarks](#checkmarks)
   - [SonarQube](#sonarqube)
+  - [Checkmarks](#checkmarks)
   - [Trivy](#trivy)
   - [Snyk](#snyk)
   - [Trufflehog](#trufflehog)
   - [Gitleaks](#gitleaks)
   - [Git-secrets](#git-secrets)
->>>>>>> 9e1dc89 (sonarqube: docker-compose and Readme)
 
 
 ## Tools overview
@@ -126,6 +113,14 @@ docker-compose -f app/sonarqube.yml up -d
   -Dsonar.token=sqp_04b3cdb170e93f2d376e9e9549de51fc20a32ae1
 ```
 
+### Checkmarks
+
+1. Go to `app` project to review `pom.xml`
+   ![alt text](images/checkmarks-info.png)
+
+2. Checkout `checkmarks: update dependency versions to resolve vulnerabilities` commit
+
+
 ### Trivy
 
 [//]: # (todo: need to add something)
@@ -143,5 +138,12 @@ docker-compose -f app/sonarqube.yml up -d
 [//]: # (todo: need to add something)
 
 ### Git-secrets
+
+[//]: # (todo: need to add something)
+=======
+
+[//]: # (todo: need to add something)
+
+### Trivy
 
 [//]: # (todo: need to add something)
