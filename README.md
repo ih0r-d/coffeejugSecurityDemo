@@ -3,6 +3,7 @@
 ![](https://img.shields.io/badge/Language-Java-informational?style=flat&logo=java&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-Terraform-informational?style=flat&logo=java&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-Maven-informational?style=flat&logo=apache-maven&logoColor=white&color=2bbc8a)
+
 ![](https://img.shields.io/badge/Tools-Hadolint-informational?style=flat&logo=hadolint&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-Checkmarx-informational?style=flat&logo=checkmarx&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-SonarQube-informational?style=flat&logo=sonarqube&logoColor=white&color=2bbc8a)
@@ -25,7 +26,6 @@ This repository contains a demo of java application and terraform code.
   - [Snyk](#snyk)
   - [Trufflehog](#trufflehog)
   - [Gitleaks](#gitleaks)
-  - [Git-secrets](#git-secrets)
 
 
 ## Tools overview
@@ -153,13 +153,16 @@ snyk --help
 [![Watch the video](https://i.ytimg.com/vi/BQWesBxbqWQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBsBBxzmLGJL-HKIqmln8Ice9PiEg)](https://www.youtube.com/watch?v=BQWesBxbqWQ)
 
 ### Trufflehog
+Link: https://github.com/trufflesecurity/trufflehog
 
-[//]: # (todo: need to add something)
+```shell
+trufflehog github --only-verified --repo https://github.com/ih0r-d/coffeeJugSecurityDemo 
+```
+
+```shell
+trufflehog filesystem ./ --only-verified --fail --json | jq 
+```
 
 ### Gitleaks
 
-[//]: # (todo: need to add something)
-
-### Git-secrets
-
-[//]: # (todo: need to add something)
+Link: https://github.com/gitleaks/gitleaks
