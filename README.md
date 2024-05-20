@@ -142,12 +142,15 @@ trivy fs --scanners vuln,secret,misconfig terraform/
 * https://github.com/aquasecurity/trivy-action
 * https://github.com/lazy-actions/gitrivy
 * CodeQL tool -> https://github.com/ih0r-d/coffeeJugSecurityDemo/settings/security_analysis
-* 
+
 
 ### Snyk
 ```shell
 snyk --help
 ```
+* https://security.snyk.io/vuln
+
+[![Watch the video](https://i.ytimg.com/vi/BQWesBxbqWQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBsBBxzmLGJL-HKIqmln8Ice9PiEg)](https://www.youtube.com/watch?v=BQWesBxbqWQ)
 
 ### Trufflehog
 
