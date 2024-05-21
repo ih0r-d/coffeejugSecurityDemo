@@ -11,26 +11,32 @@
 ![](https://img.shields.io/badge/Tools-Snyk-informational?style=flat&logo=snyk&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-TruffleHog-informational?style=flat&logo=trufflehog&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Tools-Gitleaks-informational?style=flat&logo=gitleaks&logoColor=white&color=2bbc8a)
-![](https://img.shields.io/badge/Tools-Git--secrets-informational?style=flat&logo=git&logoColor=white&color=2bbc8a)
 
 
 This repository contains a demo of java application and terraform code.
 
 ## Table of Contents
 
-- [Tools overview](#application)
-  - [Hadolint](#hadolint)
-  - [SonarQube](#sonarqube)
-  - [Checkmarks](#checkmarks)
-  - [Trivy](#trivy)
-  - [Snyk](#snyk)
-  - [Trufflehog](#trufflehog)
-  - [Gitleaks](#gitleaks)
+- [Security Problems and Solutions](#application)
+  - [Detecting Issues in Dockerfiles](#hadolint)
+  - [Ensuring Code Quality and Security](#sonarqube)
+  - [Identifying Static Application Security Flaws](#checkmarks)
+  - [Container Vulnerability Scanning](#trivy)
+  - [Managing Vulnerabilities in Open Source Dependencies](#snyk)
+  - [Detecting Secrets in Code Repositories](#trufflehog)
+  - [Finding Leaks in Git Repositories](#gitleaks)
 
+[//]: # (Detecting Issues in Dockerfiles &#40;Hadolint&#41;)
+[//]: # (Ensuring Code Quality and Security &#40;SonarQube&#41;)
+[//]: # (Identifying Static Application Security Flaws &#40;SAST&#41; &#40;Checkmarx&#41;)
+[//]: # (Scanning for Vulnerabilities in Containers &#40;Trivy&#41;)
+Managing Vulnerabilities in Open Source Dependencies (Snyk)
+Detecting Secrets in Code Repositories (TruffleHog)
+Finding Leaks in Git Repositories (Gitleaks)
 
 ## Tools overview
 
-### Hadolint
+### Detecting Issues in Dockerfiles
 
 * Scan `v0`
 ```shell
@@ -96,7 +102,7 @@ hadolint app/Dockerfile.v1
 docker buildx build . -t coffee-jug-demo:v1-fixed -f app/Dockerfile.v1-fixed
 ```
 
-### SonarQube
+### Ensuring Code Quality and Security
 =======
 
 1. Start `sonarqube` via docker-compose
@@ -113,7 +119,7 @@ docker-compose -f app/sonarqube.yml up -d
   -Dsonar.token=sqp_04b3cdb170e93f2d376e9e9549de51fc20a32ae1
 ```
 
-### Checkmarks
+### Identifying Static Application Security Flaws
 
 1. Go to `app` project to review `pom.xml`
    ![alt text](images/checkmarks-info.png)
@@ -121,7 +127,7 @@ docker-compose -f app/sonarqube.yml up -d
 2. Checkout `checkmarks: update dependency versions to resolve vulnerabilities` commit
 
 
-### Trivy
+### Scanning for Vulnerabilities in Containers
 1. Overview of doc https://aquasecurity.github.io/trivy/v0.51/docs
 2. Image scan
 ```shell
@@ -144,7 +150,7 @@ trivy fs --scanners vuln,secret,misconfig terraform/
 * CodeQL tool -> https://github.com/ih0r-d/coffeeJugSecurityDemo/settings/security_analysis
 
 
-### Snyk
+### Managing Vulnerabilities in Open Source Dependencies
 ```shell
 snyk --help
 ```
@@ -152,7 +158,7 @@ snyk --help
 
 [![Watch the video](https://i.ytimg.com/vi/BQWesBxbqWQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBsBBxzmLGJL-HKIqmln8Ice9PiEg)](https://www.youtube.com/watch?v=BQWesBxbqWQ)
 
-### Trufflehog
+### Detecting Secrets in Code Repositories
 Link: https://github.com/trufflesecurity/trufflehog
 
 ```shell
@@ -163,6 +169,6 @@ trufflehog github --only-verified --repo https://github.com/ih0r-d/coffeeJugSecu
 trufflehog filesystem ./ --only-verified --fail --json | jq 
 ```
 
-### Gitleaks
+### Finding Leaks in Git Repositories
 
 Link: https://github.com/gitleaks/gitleaks
