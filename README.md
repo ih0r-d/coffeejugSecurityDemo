@@ -18,7 +18,7 @@ This repository contains a demo of java application and terraform code.
 ## Table of Contents
 
 - [Security Problems and Solutions](#application)
-  - [Detecting Issues in Dockerfiles](#hadolint)
+  - [Detecting Issues in Dockerfiles and containers images](#hadolint_dockle)
   - [Ensuring Code Quality and Security](#sonarqube)
   - [Identifying Static Application Security Flaws](#checkmarks)
   - [Container Vulnerability Scanning](#trivy)
@@ -26,24 +26,16 @@ This repository contains a demo of java application and terraform code.
   - [Detecting Secrets in Code Repositories](#trufflehog)
   - [Finding Leaks in Git Repositories](#gitleaks)
 
-[//]: # (Detecting Issues in Dockerfiles &#40;Hadolint&#41;)
-[//]: # (Ensuring Code Quality and Security &#40;SonarQube&#41;)
-[//]: # (Identifying Static Application Security Flaws &#40;SAST&#41; &#40;Checkmarx&#41;)
-[//]: # (Scanning for Vulnerabilities in Containers &#40;Trivy&#41;)
-Managing Vulnerabilities in Open Source Dependencies (Snyk)
-Detecting Secrets in Code Repositories (TruffleHog)
-Finding Leaks in Git Repositories (Gitleaks)
-
 ## Tools overview
 
-### Detecting Issues in Dockerfiles
+### Detecting Issues in Dockerfiles and containers images
 
 * Scan `v0`
 ```shell
 hadolint app/Dockerfile.v0
 ```
 
-### Full `yaml` schema
+### Full hadolint `yaml` schema
 ```yaml
 failure-threshold: string               # name of threshold level (error | warning | info | style | ignore | none)
 format: string                          # Output format (tty | json | checkstyle | codeclimate | gitlab_codeclimate | gnu | codacy)
@@ -73,10 +65,10 @@ trustedRegistries: string | [string]    # registry or list of registries
 hadolint --config app/hadolint-config.yaml  app/Dockerfile.v0 | jq
 ```
 
-* Build `v0`
+* Build `v0` container (run from `app` folder)
 ```shell
 mvn clean package && \
-docker buildx build . -t coffee-jug-demo:v0 -f app/Dockerfile.v0 
+docker buildx build . -t coffee-jug-demo:v0 -f Dockerfile.v0 
 ```
 
 * Scan `v0-fixed` with custom config
@@ -87,9 +79,9 @@ hadolint --config app/hadolint-config.yaml app/Dockerfile.v0-fixed | jq
 hadolint --config app/hadolint-config.yaml app/Dockerfile.v0 | tidy -xml -iq
 ```
 
-* Build `v0-fixed` docker container
+* Build `v0-fixed` container (run from `app` folder)
 ```shell
-docker buildx build . -t coffee-jug-demo:v0-fixed -f app/Dockerfile.v0-fixed
+docker buildx build . -t coffee-jug-demo:v0-fixed -f Dockerfile.v0-fixed
 ```
 
 * Scan `v1` via hadolint
@@ -102,10 +94,18 @@ hadolint app/Dockerfile.v1
 docker buildx build . -t coffee-jug-demo:v1-fixed -f app/Dockerfile.v1-fixed
 ```
 
+* Scan built image via `dockle`, results available in (dockle folder)
+```shell
+dockle -f json -o ./dockle-results/v0.json coffee-jug-demo:v0
+dockle -f json -o ./dockle-results/v0-fixed.json coffee-jug-demo:v0-fixed
+dockle -f json -o ./dockle-results/v1.json coffee-jug-demo:v1
+dockle -f json -o ./dockle-results/v1-fixed.json coffee-jug-demo:v1-fixed
+```
+
 ### Ensuring Code Quality and Security
 =======
 
-1. Start `sonarqube` via docker-compose
+1. Local setup `sonarqube` via docker-compose
 ```shell
 docker-compose -f app/sonarqube.yml up -d
 ```
@@ -123,8 +123,6 @@ docker-compose -f app/sonarqube.yml up -d
 
 1. Go to `app` project to review `pom.xml`
    ![alt text](images/checkmarks-info.png)
-
-2. Checkout `checkmarks: update dependency versions to resolve vulnerabilities` commit
 
 
 ### Scanning for Vulnerabilities in Containers
@@ -151,24 +149,40 @@ trivy fs --scanners vuln,secret,misconfig terraform/
 
 
 ### Managing Vulnerabilities in Open Source Dependencies
+
+1. Go to `projects` page on `https://app.snyk.io/` and check statuses
+
+2. Snyk CLI help
 ```shell
 snyk --help
 ```
+3. Snyk DB vulnerability
 * https://security.snyk.io/vuln
 
+4. Talk about snyk
 [![Watch the video](https://i.ytimg.com/vi/BQWesBxbqWQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBsBBxzmLGJL-HKIqmln8Ice9PiEg)](https://www.youtube.com/watch?v=BQWesBxbqWQ)
 
 ### Detecting Secrets in Code Repositories
-Link: https://github.com/trufflesecurity/trufflehog
+1. Link: https://github.com/trufflesecurity/trufflehog
 
+2. Test scan trufflehog repo:
+```shell
+trufflehog github --org=trufflesecurity --only-verified
+```
+
+3. Scan repo with demo
 ```shell
 trufflehog github --only-verified --repo https://github.com/ih0r-d/coffeeJugSecurityDemo 
 ```
 
+4. Scan project filesystem
 ```shell
 trufflehog filesystem ./ --only-verified --fail --json | jq 
 ```
 
 ### Finding Leaks in Git Repositories
-
-Link: https://github.com/gitleaks/gitleaks
+1. Link: https://github.com/gitleaks/gitleaks
+2. Short demo:
+```shell
+ gitleaks --help
+```
